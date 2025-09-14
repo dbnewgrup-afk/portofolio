@@ -1,17 +1,105 @@
 @import "./styles/reset.css";
-@import "./styles/variables.css";@import "./styles/reset.css";
 @import "./styles/variables.css";
+@import "./components/ControllerView/hologram.css";
 
-body { margin: 0; font-family: system-ui, sans-serif; background:#0e1b2a; color:#fff; }
+:root {
+  --bg:#0e1b2a;
+  --panel:#102238;
+  --panelBorder: rgba(130,170,255,.25);
+  --text:#eaf2ff;
+  --muted:#b7c6e6;
+  --brand:#9fb3ff;
+}
 
-.container { max-width: 1080px; margin: 16px auto; padding: 16px; }
+html,body { background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; }
+.container { max-width: 960px; margin: 24px auto; padding: 0 16px; }
 
-h1 { margin: 0 0 16px; font-size: 28px; line-height: 1.2; }
+h1 { font-size: 24px; margin: 0 0 16px; color: var(--text); }
+h2 { font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 24px 0 8px; }
 
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+section + section { margin-top: 16px; }
+.card, .holo { border-radius: 14px; }
 img.responsive { display:block; width:100%; height:auto; border-radius:12px; }
 
-.card { background:#0f2238; border:1px solid rgba(255,255,255,0.06); border-radius:16px; padding:16px; }
+article.card { background: rgba(16,34,56,.65); border:1px solid var(--panelBorder); padding:16px; }
+article.card h1, article.card h2, article.card h3 { margin: 0 0 12px; }
+article.card ul { margin-left: 18px; }
+article.card li { margin: 4px 0; }
 
-h2 { margin: 24px 0 12px; font-size: 20px; }
-.card + .card { margin-top: 12px; }
-section + section { margin-top: 16px; }
+.hero { overflow:hidden; }
+.hero img { aspect-ratio: 16/10; object-fit: cover; }
+/* sudah ada import reset/variables/hologram.css di atas */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: radial-gradient(120% 100% at 50% 0%, #0e1b2a 0%, #0a1624 40%, #08121e 100%);
+  min-height: 420px;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.hero-img {
+  width: 88%;
+  max-width: 760px;
+  height: auto;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,.55));
+}
+
+/* kartu hologram mengambang */
+.hud-card {
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(520px, 86%);
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(16,34,56,.65);
+  border: 1px solid rgba(130,170,255,.28);
+  box-shadow:
+    0 0 0 1px rgba(130,170,255,.18) inset,
+    0 10px 30px rgba(0,0,0,.35),
+    0 0 24px rgba(120,180,255,.18);
+  backdrop-filter: blur(8px) saturate(130%);
+}
+
+.hud-card::before {
+  content:"";
+  position:absolute; inset:-1px; border-radius:16px;
+  background:
+    radial-gradient(120% 90% at 12% 0%, rgba(120,180,255,.22), transparent 60%),
+    radial-gradient(120% 90% at 88% 0%, rgba(120,255,220,.18), transparent 62%);
+  pointer-events:none;
+}
+
+.label { margin:0 0 6px; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#a9bff9; }
+.name { margin:0; font-size:20px; color:#eaf2ff; }
+.role { margin:2px 0 10px; color:#b7c6e6; font-size:14px; }
+
+.hud-row { display:flex; gap:12px; align-items:flex-start; }
+.avatar {
+  width:44px; height:44px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #9fb3ff, #2a3f73);
+  display:grid; place-items:center; color:#08121e; font-weight:700;
+  box-shadow: 0 0 0 2px rgba(130,170,255,.35), 0 8px 20px rgba(0,0,0,.35);
+}
+.desc { margin:0; color:#d9e4ff; line-height:1.5; }
+
+.hint {
+  position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+  color:#a9bff9; font-size:12px; opacity:.9;
+}
+
+/* responsif */
+@media (max-width: 520px) {
+  .hero { min-height: 380px; padding: 18px; }
+  .hud-card { top: 24px; padding: 12px; }
+  .hud-row { gap:10px; }
+  .avatar { width:40px; height:40px; font-size:14px; }
+}
