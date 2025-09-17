@@ -1,51 +1,378 @@
-.holo {
-  position: relative;
-  background: rgba(16, 34, 56, 0.6);
-  border: 1px solid rgba(130, 170, 255, 0.25);
-  border-radius: 16px;
-  padding: 16px;
-  backdrop-filter: blur(6px) saturate(130%);
-  box-shadow:
-    0 0 0 1px rgba(130,170,255,0.25) inset,
-    0 10px 30px rgba(0,0,0,0.35),
-    0 0 32px rgba(80,140,255,0.15);
+/* src/components/HologramPanel/hologram.css */
+
+/* =========================
+   Theme vars
+========================= */
+:root{
+  --neon:#58a6ff;
+  --neon-strong:#80c8ff;
+  --holo-bg:rgba(14,40,74,.18);
+  --panel-shadow:0 10px 36px rgba(0,0,0,.45);
+  --holo-radius:20px;
+  --ring:rgba(255,255,255,.9);
+  /* tinggi panel fix supaya tidak ngedorong controller */
+  --holo-height:clamp(540px, 70vh, 780px);
 }
-.holo::before {
-  content: "";
-  position: absolute; inset: -1px;
-  border-radius: 16px;
-  background: radial-gradient(120% 80% at 10% 0%, rgba(120,180,255,0.25), transparent 60%),
-              radial-gradient(120% 80% at 90% 0%, rgba(120,255,220,0.18), transparent 62%);
-  pointer-events: none;
+
+/* =========================
+   Hologram Panel (di atas controller)
+========================= */
+.holo{
+  position:relative;
+  z-index:3;
+  width:min(1100px,96vw);
+  margin:28px auto 18px;
+  padding:0;
+  border-radius:var(--holo-radius);
+  background:var(--holo-bg);
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+  box-shadow:var(--panel-shadow);
+  overflow:hidden;
+
+  opacity:0;
+  transform:scale(.985);
+  transition:opacity 220ms ease, transform 220ms ease;
 }
-.holo-scan {
-  position: absolute; left: 0; right: 0; height: 2px; top: 0;
-  background: linear-gradient(90deg, transparent, rgba(140,190,255,0.6), transparent);
-  opacity: .6; filter: blur(.3px);
-  animation: scan 3.2s linear infinite;
-  pointer-events: none;
-}
-@keyframes scan { 0% { transform: translateY(0); } 100% { transform: translateY(100%); } }
-.holo h2, .holo h1 { margin: 0 0 12px; }
-.holo {
-  position: relative;
-  background: rgba(16, 34, 56, 0.6);
-  border: 1px solid rgba(130,170,255,0.25);
-  border-radius: 16px;
-  padding: 16px;
-  backdrop-filter: blur(6px) saturate(130%);
-  box-shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 32px rgba(80,140,255,.12);
-}
-.holo::before {
+.holo.holo-show{ opacity:1; transform:scale(1); }
+
+/* Neon edge */
+.holo::before{
   content:"";
-  position:absolute; inset:-1px; border-radius:16px;
-  background:
-    radial-gradient(120% 80% at 10% 0%, rgba(120,180,255,.18), transparent 60%),
-    radial-gradient(120% 80% at 90% 0%, rgba(120,255,220,.12), transparent 62%);
+  position:absolute; inset:0;
+  border-radius:var(--holo-radius);
+  padding:2px;
+  background:linear-gradient(180deg,
+    rgba(255,255,255,.7) 0%,
+    var(--neon-strong) 25%,
+    var(--neon) 55%,
+    rgba(96,176,255,.65) 100%);
+  mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite:exclude; -webkit-mask-composite:xor;
   pointer-events:none;
 }
-.holo-scan { position:absolute; left:0; right:0; height:2px; top:0;
-  background: linear-gradient(90deg, transparent, rgba(140,190,255,.65), transparent);
-  opacity:.6; filter: blur(.3px); animation: scan 3.2s linear infinite; pointer-events:none;
+/* Inner glow */
+.holo::after{
+  content:"";
+  position:absolute; inset:3px;
+  border-radius:calc(var(--holo-radius) - 2px);
+  box-shadow:
+    inset 0 0 28px rgba(88,166,255,.28),
+    inset 0 0 60px rgba(88,166,255,.18);
+  pointer-events:none;
 }
-@keyframes scan { from { transform: translateY(0); } to { transform: translateY(100%); } }
+
+/* Height lock */
+.holo-tall{ height:var(--holo-height); }
+
+/* Content layout */
+.holo-content{
+  position:relative; z-index:1;
+  display:flex; flex-direction:column;
+  height:100%;
+  padding:28px 32px;
+}
+.holo-head{ margin-bottom:6px; }
+.holo-title{ font-weight:700; letter-spacing:.5px; font-size:clamp(1.3rem,1rem+1vw,2rem); }
+.holo-sub{ opacity:.92; margin-top:4px; font-weight:600; font-size:clamp(1rem,.9rem+.6vw,1.25rem); }
+
+/* =========================
+   Tabs
+========================= */
+.holo-menu{
+  display:flex; gap:10px; align-items:center;
+  margin-top:12px; margin-bottom:8px; flex-wrap:wrap;
+}
+.holo-tab{
+  appearance:none; background:transparent; color:#eaf2ff;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:12px; padding:8px 12px;
+  font-weight:600; font-size:.95rem; cursor:pointer;
+  transition:transform 120ms ease, background 120ms ease, border-color 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+.holo-tab:hover{ background:rgba(10,26,46,.35); transform:translateY(-1px); border-color:rgba(255,255,255,.28); }
+.holo-tab.is-active{
+  background:rgba(10,26,46,.55);
+  box-shadow:0 0 0 1px rgba(255,255,255,.06), inset 0 0 18px rgba(88,166,255,.18);
+  border-color:rgba(128,200,255,.55);
+}
+.holo-tab:focus-visible{ outline:2px solid rgba(128,200,255,.9); outline-offset:2px; }
+
+/* =========================
+   Body (scroll internal)
+========================= */
+.holo-body{
+  margin-top:8px;
+  flex:1 1 auto; min-height:0;
+  overflow-y:auto; overscroll-behavior:contain;
+}
+/* scrollbar tematik */
+.holo-body::-webkit-scrollbar{ width:10px; }
+.holo-body::-webkit-scrollbar-track{ background:rgba(10,26,46,.35); border-radius:8px; }
+.holo-body::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg, rgba(128,200,255,.55), rgba(88,166,255,.45));
+  border-radius:8px; border:2px solid rgba(10,26,46,.35);
+}
+.holo-text{ opacity:.95; margin-top:2px; font-size:clamp(.92rem,.85rem+.35vw,1rem); line-height:1.65; }
+
+/* =========================
+   CLOSED: sembunyikan panel, tampilkan teks
+========================= */
+.is-closed.holo{
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.is-closed.holo::before,
+.is-closed.holo::after,
+.is-closed .holo-border{ display:none !important; }
+.is-closed .holo-head,
+.is-closed .holo-menu,
+.is-closed .holo-body{
+  opacity:0 !important; pointer-events:none !important;
+  height:0 !important; margin:0 !important; padding:0 !important; overflow:hidden !important;
+}
+
+/* Overlay instruksi di tengah */
+.holo-closed-overlay{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  padding:16px; pointer-events:none;
+}
+
+/* Blink: single source */
+@keyframes startBlink { 0%{opacity:.22} 50%{opacity:1} 100%{opacity:.22} }
+.is-closed .holo-closed-text{
+  font-weight:800; letter-spacing:.08em;
+  font-size:clamp(1rem,.8rem + .8vw,1.25rem);
+  color:#eaf2ff; text-shadow:
+    0 0 12px rgba(88,166,255,.35),
+    0 0 28px rgba(88,166,255,.25);
+  animation:startBlink 1.2s infinite ease-in-out;
+}
+@media (prefers-reduced-motion:reduce){
+  .is-closed .holo-closed-text{ animation:startBlink 1.4s infinite ease-in-out; }
+}
+
+/* =========================
+   Skills Grid
+========================= */
+.skills{ margin-top:8px; }
+.skills-section{ margin-top:14px; }
+.skills-title{
+  font-weight:700; letter-spacing:.3px;
+  font-size:clamp(1rem,.9rem+.4vw,1.15rem);
+  margin-bottom:8px; color:#eaf2ff;
+}
+
+/* FIX: kolom tidak melar mengikuti lebar panel */
+.skills-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 150px)); /* fixed cell */
+  justify-content: start; /* sisakan gap di kanan, jangan stretch */
+  gap:12px;
+}
+
+.skill-card{
+  list-style:none;
+  width:150px; /* match track width */
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px; padding:10px 8px; border-radius:14px;
+  background:rgba(10,26,46,.35);
+  -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
+  transition:transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
+}
+.skill-card:hover{
+  transform:translateY(-2px);
+  background:rgba(10,26,46,.5);
+  box-shadow:0 6px 16px rgba(0,0,0,.25), inset 0 0 24px rgba(88,166,255,.12);
+}
+.skill-icon{ display:block; width:40px; height:40px; object-fit:contain; }
+.skill-name{ font-size:.85rem; opacity:.92; text-align:center; }
+
+/* =========================
+   Generic button (Collab)
+========================= */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:38px; padding:0 14px; border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(10,26,46,.45); color:#eaf2ff; text-decoration:none;
+  font-weight:600; font-size:.95rem;
+  transition:transform 120ms ease, background 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+.btn + .btn{ margin-left:8px; }
+.btn:hover{
+  transform:translateY(-1px);
+  background:rgba(10,26,46,.65);
+  border-color:rgba(128,200,255,.5);
+  box-shadow:0 0 0 1px rgba(255,255,255,.06), inset 0 0 24px rgba(88,166,255,.14);
+}
+.btn:focus-visible{ outline:2px solid rgba(128,200,255,.9); outline-offset:2px; }
+
+/* =========================
+   Controller + Hotspots (SVG)
+========================= */
+.controller-wrap{
+  position:relative; z-index:2; /* di bawah panel */
+  width:min(940px,92vw);
+  margin:24px auto 12px;
+}
+.controller-svg{ width:100%; height:auto; display:block; }
+
+.controller-svg circle.spot-hit{
+  fill:rgba(255,255,255,.10) !important;
+  stroke:transparent !important;
+  transition:transform 120ms ease, fill 120ms ease, opacity 120ms ease;
+  pointer-events:auto;
+}
+.controller-svg circle.spot-ring{
+  fill:transparent !important;
+  stroke:var(--ring) !important; stroke-width:2 !important;
+  opacity:.35; filter:url(#spotGlow);
+  transition:opacity 120ms ease; pointer-events:none;
+}
+.controller-svg g.spot:hover .spot-hit,
+.controller-svg circle.spot-hit:focus-visible{ fill:rgba(255,255,255,.32) !important; transform:scale(1.06); }
+.controller-svg g.spot:hover .spot-ring,
+.controller-svg circle.spot-hit:focus-visible + .spot-ring{ opacity:1; }
+
+/* Aksesibilitas */
+@media (prefers-reduced-motion:reduce){
+  .controller-svg circle.spot-hit, .controller-svg circle.spot-ring{ transition:none; }
+  .holo, .holo-tab, .skill-card{ transition:none !important; }
+}
+
+/* Utilities */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+.panel{ opacity:0; transform:scale(.985); transition:opacity 200ms ease, transform 200ms ease; }
+.panel.show{ opacity:1; transform:scale(1); }
+
+/* Tombol close opsional */
+.holo-close{
+  position:fixed; top:18px; right:18px;
+  width:36px; height:36px; line-height:36px;
+  border-radius:10px; border:0;
+  background:rgba(10,26,46,.7); color:#eaf2ff;
+  font-size:22px; font-weight:600; cursor:pointer;
+  box-shadow:0 4px 18px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.08);
+  transition:transform 120ms ease, background 120ms ease, opacity 120ms ease;
+  z-index:30;
+}
+.holo-close:hover{ transform:scale(1.06); background:rgba(10,26,46,.85); }
+.holo-close:focus-visible{ outline:2px solid rgba(128,200,255,.9); outline-offset:2px; }
+.input, .textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #3a4a5a;
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  background: rgba(255,255,255,0.1);
+}
+/* src/components/HologramPanel/hologram.css */
+
+/* Biarkan markdown tetap full width */
+.panel .markdown img {
+  width: 100%;
+  height: auto;
+}
+
+/* Thumbnail khusus */
+.panel .thumb-wrap {
+  width: clamp(20rem, 18vw, 15rem) !important;   /* ~152px */
+  display: block !important;
+  margin: 0 auto !important;  /* center */
+}
+
+.panel .thumb-wrap .thumb-img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  display: block !important;
+}
+/* src/components/ControllerView/hologram.css */
+
+/* default (untuk hologram mode) boleh tetap absolute */
+.controller-view {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ===== START SCREEN LAYOUT ===== */
+.start-screen {
+  min-height: 100vh;
+  width: 100%;
+  background: #0b1020;            /* samakan dengan hero */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;         /* center vertical */
+  padding: 3rem 1rem;
+  position: relative;
+}
+
+.start-screen .start-text {
+  color: rgba(203,213,225,.8);     /* abu-abu soft */
+  letter-spacing: .25em;
+  font-size: 0.9rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+/* ===== DEFAULT (APP MODE) POSISI CONTROLLER ===== */
+.hero .hero-inner .controller-view {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+/* ===== OVERRIDE KHUSUS START SCREEN ===== */
+.start-screen .controller-view.static-center {
+  position: static !important;
+  transform: none !important;
+  margin: 0 auto;                  /* center horizontal */
+}
+
+/* Kalau masih ada CSS lama yang pakai .controller-wrap, ikut di-override */
+.start-screen .controller-wrap,
+.start-screen .controller-wrap .controller-view {
+  position: static !important;
+  transform: none !important;
+}
+.panel-header button {
+  font-size: 1rem;
+  line-height: 1;
+  color: #fff;
+}
+/* Saat panel ditutup, jangan ambil input sama sekali */
+.holo.is-closed,
+.holo.is-closed * {
+  pointer-events: none !important;
+}
+
+/* Pastikan controller di start-screen berada di atas layer apa pun */
+.start-screen .controller-view {
+  position: relative;
+  z-index: 2;
+}
+
+/* Kalau kamu pakai overlay blur di start-screen, pastikan tidak nyerap klik */
+.start-screen::before,
+.start-screen::after,
+.start-blur,
+.holo-closed-overlay {
+  pointer-events: none !important;
+}

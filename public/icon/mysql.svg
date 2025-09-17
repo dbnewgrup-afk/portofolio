@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 48" width="32" height="32">
+  <rect x="0" y="0" width="128" height="48" rx="10" fill="#0a1a28"/>
+  <!-- My (biru khas MySQL) -->
+  <text x="12" y="32" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="22" fill="#00618A">
+    My
+  </text>
+  <!-- SQL (oranye/kuning khas MySQL) -->
+  <text x="52" y="32" font-family="Arial, Helvetica, sans-serif" font-weight="bold" font-size="22" fill="#E48E00">
+    SQL
+  </text>
+</svg>

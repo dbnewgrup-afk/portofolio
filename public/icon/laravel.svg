@@ -1,0 +1,13 @@
+<!-- public/icon/laravel.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40" role="img" aria-labelledby="title">
+  <title>Laravel</title>
+  <defs>
+    <linearGradient id="g-laravel" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff7a66"/>
+      <stop offset="1" stop-color="#ff2d20"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="40" height="40" rx="8" fill="url(#g-laravel)"/>
+  <!-- L angular minimal -->
+  <path fill="#fff" d="M15 15h5v16h14v5H15z"/>
+</svg>

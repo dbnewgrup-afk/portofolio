@@ -1,0 +1,16 @@
+<!-- public/icon/community.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48"
+     fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- browser window -->
+  <rect x="6" y="8" width="36" height="26" rx="3"/>
+  <path d="M6 14h36"/>
+  <circle cx="12" cy="11" r="1.2"/>
+  <circle cx="16" cy="11" r="1.2"/>
+  <circle cx="20" cy="11" r="1.2"/>
+  <!-- people (community) -->
+  <circle cx="24" cy="25" r="4"/>
+  <path d="M16 34c0-3.8 3.9-6 8-6s8 2.2 8 6"/>
+  <circle cx="14" cy="26" r="3"/>
+  <circle cx="34" cy="26" r="3"/>
+  <path d="M9 34c0-2.9 3-4.8 6-4.8M39 34c0-2.9-3-4.8-6-4.8"/>
+</svg>

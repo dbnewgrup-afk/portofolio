@@ -1,1 +1,63 @@
-[]
+[
+  {
+    "id": "btn-x",
+    "label": "Tombol X",
+    "x": "60%",
+    "y": "75%",
+    "w": "7%",
+    "h": "9%",
+    "to": "contact"
+  },
+  {
+    "id": "btn-o",
+    "label": "Tombol O",
+    "x": "70%",
+    "y": "65%",
+    "w": "7%",
+    "h": "9%",
+    "to": "projects"
+  },
+  {
+    "id": "btn-square",
+    "label": "Tombol Kotak",
+    "x": "50%",
+    "y": "65%",
+    "w": "7%",
+    "h": "9%",
+    "to": "about"
+  },
+  {
+    "id": "btn-triangle",
+    "label": "Tombol Segitiga",
+    "x": "60%",
+    "y": "55%",
+    "w": "7%",
+    "h": "9%",
+    "to": "home"
+  },
+  {
+    "id": "btn-l1",
+    "label": "Tombol L1",
+    "x": "20%",
+    "y": "25%",
+    "w": "14%",
+    "h": "10%"
+  },
+  {
+    "id": "btn-r1",
+    "label": "Tombol R1",
+    "x": "80%",
+    "y": "25%",
+    "w": "14%",
+    "h": "10%"
+  },
+  {
+    "id": "btn-touch",
+    "label": "Touchpad",
+    "x": "50%",
+    "y": "35%",
+    "w": "26%",
+    "h": "13%",
+    "to": "projects"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  { "cat": "frontend", "name": "HTML",        "icon": "html.svg" },
+  { "cat": "frontend", "name": "CSS",         "icon": "css.svg" },
+  { "cat": "frontend", "name": "JavaScript",  "icon": "js.svg" },
+  { "cat": "frontend", "name": "TypeScript",  "icon": "ts.svg" },
+  { "cat": "frontend", "name": "React",       "icon": "react.svg" },
+  { "cat": "frontend", "name": "Vite",        "icon": "vite.svg" },
+  { "cat": "frontend", "name": "Tailwind CSS","icon": "tw.svg" },
+
+  { "cat": "backend",  "name": "Node.js",     "icon": "node.svg" },
+  { "cat": "backend",  "name": "Express",     "icon": "express.svg" },
+  { "cat": "backend",  "name": "Prisma",      "icon": "prisma.svg" },
+
+  { "cat": "db",       "name": "MySQL",       "icon": "mysql.svg" },
+  { "cat": "db",       "name": "PostgreSQL",  "icon": "postgres.svg" },
+
+  { "cat": "tool",     "name": "Git",         "icon": "git.svg" },
+  { "cat": "tool",     "name": "GitHub",      "icon": "github.svg" },
+  { "cat": "tool",     "name": "Figma",       "icon": "figma.svg" },
+
+  { "cat": "other",    "name": "Midtrans",    "icon": "midtrans.svg" }
+]

@@ -1,0 +1,16 @@
+<!-- public/icon/car.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48"
+     fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- body outline (side-view sedan) -->
+  <path d="M6 29v3a4 4 0 0 0 4 4h2m24 0h2a4 4 0 0 0 4-4v-4a3 3 0 0 0-3-3h-5l-5.6-6.6A4 4 0 0 0 26 17h-7a4 4 0 0 0-3.3 1.7L12 22H9a3 3 0 0 0-3 3v4"/>
+  <!-- hood + roofline + trunk -->
+  <path d="M12 22h6m3 0h9m-22 7h30"/>
+  <!-- door line & handle -->
+  <path d="M22 22v7"/>
+  <path d="M23.5 26.5h1.8"/>
+  <!-- wheels -->
+  <circle cx="15" cy="36" r="3.6"/>
+  <circle cx="33" cy="36" r="3.6"/>
+  <!-- headlight & tail hint -->
+  <path d="M10 29h2M36 29h2"/>
+</svg>

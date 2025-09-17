@@ -1,0 +1,16 @@
+<!-- public/icon/midtrans.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32" role="img" aria-labelledby="title">
+  <title>Midtrans</title>
+  <defs>
+    <linearGradient id="card" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#0d2a3a"/>
+      <stop offset="1" stop-color="#062133"/>
+    </linearGradient>
+  </defs>
+  <!-- latar kartu -->
+  <rect x="4" y="4" width="40" height="40" rx="10" fill="url(#card)"/>
+  <!-- 3 garis vertikal -->
+  <rect x="14" y="18" width="6" height="16" rx="3" fill="#79c6ff"/>
+  <rect x="21" y="12" width="6" height="22" rx="3" fill="#2392e6"/>
+  <rect x="28" y="16" width="6" height="18" rx="3" fill="#0d8ad9"/>
+</svg>

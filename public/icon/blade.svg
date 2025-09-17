@@ -1,0 +1,17 @@
+<!-- public/icon/blade.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40" role="img" aria-labelledby="title">
+  <title>Blade (Laravel Blade)</title>
+  <defs>
+    <linearGradient id="g-blade" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#9aa4b2"/>
+      <stop offset="1" stop-color="#6b7280"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="40" height="40" rx="8" fill="url(#g-blade)"/>
+  <!-- Curly braces + slash untuk nuansa templating -->
+  <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 16c-3 2-3 5-3 8s0 6 3 8"/>
+    <path d="M31 16c3 2 3 5 3 8s0 6-3 8"/>
+    <path d="M24 14l-4 20"/>
+  </g>
+</svg>

@@ -1,0 +1,98 @@
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  flex-direction: column;
+  opacity: 1;
+  transition: opacity 0.5s ease; /* fade out */
+}
+
+.loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* src/styles/loading.css */
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* center horizontal */
+  gap: 12px;             /* jarak antar elemen */
+  text-align: center;
+}
+
+.loading-logo {
+  width: 96px;           /* kecil biar proporsional */
+  margin: 0;             /* hindari offset aneh */
+  animation: blink 1.5s infinite;
+}
+
+.loading-controller {
+  width: 320px;
+  animation: blink 2s infinite alternate;
+}
+
+.loading-percent {
+  font-family: 'Orbitron', sans-serif; /* pilih font unik */
+  font-size: 2rem;
+  margin-top: 15px;
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* Logo PS transition */
+.logo-transition {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.8s ease; /* fade in/out */
+}
+
+.logo-transition.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.logo-ps {
+  width: 200px;
+  animation: deepBlink 2s infinite;
+}
+
+@keyframes deepBlink {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.skip-btn {
+  margin-top: 20px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.skip-btn:hover,
+.skip-btn:focus {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+  outline: none;
+}

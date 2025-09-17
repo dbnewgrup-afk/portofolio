@@ -1,5 +1,8 @@
 # Tentang Saya
-Saya Tuan, web developer yang fokus bikin produk beneran jalan di production. Prioritas saya: performa cepat, UI rapih, dan alur bayar aman.
-Saat ini saya bangun tiga jalur utama: portfolio statis gaya PS5, sistem Rental Mobil dengan Midtrans production, dan Portal RW 015 untuk komunitas.
+Saya web developer yang fokus pada React/TypeScript untuk frontend, Node.js atau Laravel untuk backend, dan integrasi pembayaran serta autentikasi. Saya membangun UI cepat, aksesibel, dan siap produksi.
 
-Target 2025: dua site go live stabil. Pembayaran Midtrans rapi dengan webhook terverifikasi, admin panel sederhana, dan UX bersih yang gampang dipakai.
+Pengalaman:
+- Frontend: React, Vite, Tailwind
+- Backend: Node/Express, Laravel
+- Database: MySQL, Postgres, Prisma
+- Integrasi: Midtrans, autentikasi, admin panel

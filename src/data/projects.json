@@ -1,1 +1,50 @@
-[]
+
+[
+  {
+    "id": "proj-1",
+    "title": "Rental Mobil",
+    "summary": "Aplikasi booking mobil berbasis web. Fitur Midtrans payment, invoice otomatis, dan admin panel untuk pengelolaan armada.",
+    "description": "Aplikasi booking mobil berbasis web. Fitur Midtrans payment, invoice otomatis, dan admin panel untuk pengelolaan armada.",
+    "image": "/images/rental.png",
+    "link": "https://rental.example.com",
+    "url": "https://rental.example.com",
+    "tags": ["React", "Node.js", "Prisma", "Midtrans"],
+    "icons": [
+      "/icon/react.svg",
+      "/icon/node.svg",
+      "/icon/prisma.svg",
+      "/icon/midtrans.svg"
+    ]
+  },
+  {
+    "id": "proj-2",
+    "title": "Portal RW 015",
+    "summary": "Portal komunitas dengan login NIK, iuran online Midtrans, berita, galeri, dan sistem surat permohonan digital.",
+    "description": "Portal komunitas dengan login NIK, iuran online Midtrans, berita, galeri, dan sistem surat permohonan digital.",
+    "image": "/images/portal.png",
+    "link": "https://portal.example.com",
+    "url": "https://portal.example.com",
+    "tags": ["Laravel", "MySQL", "Blade", "Midtrans"],
+    "icons": [
+      "/icon/laravel.svg",
+      "/icon/mysql.svg",
+      "/icon/blade.svg",
+      "/icon/midtrans.svg"
+    ]
+  },
+  {
+    "id": "proj-3",
+    "title": "Bina Bordir",
+    "summary": "Website katalog dan penjualan produk bordir. Ada galeri multi-gambar, stok, harga, serta integrasi marketplace.",
+    "description": "Website katalog dan penjualan produk bordir. Ada galeri multi-gambar, stok, harga, serta integrasi marketplace.",
+    "image": "/images/binabordir.png",
+    "link": "https://binabordir.com",
+    "url": "https://binabordir.com",
+    "tags": ["Laravel", "MySQL", "Bootstrap"],
+    "icons": [
+      "/icon/laravel.svg",
+      "/icon/mysql.svg",
+      "/icon/bootstrap.svg"
+    ]
+  }
+]

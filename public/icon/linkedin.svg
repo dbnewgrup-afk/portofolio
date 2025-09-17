@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="40" height="40" role="img" aria-labelledby="title desc">
+  <title>LinkedIn</title><desc>Ikon LinkedIn</desc>
+  <defs>
+    <linearGradient id="li" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#0A66C2"/>
+      <stop offset="1" stop-color="#004182"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="40" height="40" rx="8" fill="url(#li)"/>
+  <!-- batang kecil -->
+  <rect x="13" y="20" width="4" height="12" fill="#fff" rx="1"/>
+  <circle cx="15" cy="15" r="2.2" fill="#fff"/>
+  <!-- huruf n -->
+  <path fill="#fff" d="M22 20h4v1.8c.8-1.4 2-2.1 3.9-2.1 3 0 4.1 1.8 4.1 5V32h-4v-6.3c0-1.8-.6-2.7-2-2.7-1.5 0-2.4 1-2.4 2.7V32h-4V20z"/>
+</svg>
